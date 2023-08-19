@@ -3,6 +3,105 @@
 @tailwind utilities;
 
 .bg-hero-gradient {
-  background: rgb(18,12,120);
-  background: linear-gradient(90deg, #120C78 0%, #101988 67%, #0077FF 100%);
+  @apply text-primary;
+  background: rgb(255,169,0);
+  background: linear-gradient(90deg, rgba(255,169,0,1) 0%, rgba(255,187,54,1) 32%, rgba(111,220,112,1) 86%, rgba(10,196,12,1) 100%);
+}
+
+.formik-label {
+  @apply font-medium mt-[24px] mb-[4px];
+}
+
+.formik-input {
+  @apply w-full sm:max-w-xs px-[12px] py-[4px] rounded-md bg-white/90 border-primary/20 border;
+}
+
+.formik-error {
+  @apply text-red-500;
+}
+
+.formik-radio-group, 
+.formik-checkbox-group {
+  display: inline-block;
+  position: relative;
+  padding-left: 24px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.formik-radio-group input, 
+.formik-checkbox-group input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  line-height: 30px;
+  vertical-align: center;
+}
+
+.formik-radio-button {
+  @apply bg-white/90 border border-primary/20;
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+
+.formik-checkbox-button {
+  @apply bg-white/90 border border-primary/20;
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border-radius: 10%;
+}
+
+.formik-radio-group:hover input ~ .formik-radio-button, 
+.formik-checkbox-group:hover input ~ .formik-checkbox-button {
+  @apply bg-gray-200;
+}
+
+.formik-radio-group input:checked ~ .formik-radio-button, 
+.formik-checkbox-group input:checked ~ .formik-checkbox-button {
+  @apply bg-primary
+}
+
+.formik-radio-button:after, 
+.formik-checkbox-button:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.formik-radio-group input:checked ~ .formik-radio-button:after, 
+.formik-checkbox-group input:checked ~ .formik-checkbox-button:after {
+  display: block;
+}
+
+.formik-radio-group .formik-radio-button:after {
+  top: 5px;
+  left: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.formik-checkbox-group .formik-checkbox-button:after {
+  top: 3px;
+  left: 6px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
