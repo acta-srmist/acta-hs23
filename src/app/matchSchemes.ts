@@ -23,21 +23,22 @@ const matchSchemes = (values: FormValues) => {
     ex_serviceman: formik_ex_serviceman,
     driving_license: formik_driving_license,
     marital_status,
+    fiance_age: formik_fiance_age,
     children: formik_children,
     pregnant: formik_pregnant,
     income_freq,
-		income_amt,
-    annual_household_income,
+		income_amt: formik_income_amt,
+    annual_household_income: formik_annual_household_income,
     male_members: formik_male_members,
     earning_members: formik_earning_members,
     able_bodied_members: formik_able_bodied_members,
-    electricity_consumption,
+    electricity_consumption: formik_electricity_consumption,
     rural_urban_status,
     land_owning: formik_land_owning,
 		cultivable_land: formik_cultivable_land,
 		kuccha_one_room: formik_kuccha_one_room,
-		wet_land_area,
-		dry_land_area,
+		wet_land_area: formik_wet_land_area,
+		dry_land_area: formik_dry_land_area,
     govt_school_612: formik_govt_school_612,
     highest_education,
     vocational_training: formik_vocational_training,
@@ -73,11 +74,19 @@ const matchSchemes = (values: FormValues) => {
 	const male_members = formik_male_members as number
 	const earning_members = formik_earning_members as number
 	const able_bodied_members = formik_able_bodied_members as number
+	const income_amt = formik_income_amt as number
+	const annual_household_income = formik_annual_household_income as number
+	const electricity_consumption = formik_electricity_consumption as number
+	const wet_land_area = formik_wet_land_area as number
+	const dry_land_area = formik_dry_land_area as number
+	const fiance_age = formik_fiance_age as number
 
 	const income = {
 		freq: income_freq,
 		amt: income_amt as number
 	}
+
+	const annual_income = income.freq === "annually" ? income.amt : income.freq === "monthly" ? income.amt * 12 : income.amt * 365
 
 	const children: { age: number, gender: string }[] = []
 	if (typeof formik_children === "number" && formik_children > 1) {
@@ -106,18 +115,18 @@ const matchSchemes = (values: FormValues) => {
 	if (NS.NAPMMY.eligibility_func(age, occupations, occupation_sector)) { result.national.push("NAPMMY") }
 	if (NS.NAPMJJBY.eligibility_func(age)) { result.national.push("NAPMJJBY") }
 
-	// if (TS.TNAU.eligibility_func()) { result.tamilnadu.push("TNAU") }
-	// if (TS.TNAKT.eligibility_func()) { result.tamilnadu.push("TNAKT") }
-	// if (TS.TNATWSWW.eligibility_func()) { result.tamilnadu.push("TNATWSWW") }
-	// if (TS.TNMRAHEAS.eligibility_func()) { result.tamilnadu.push("TNMRAHEAS") }
-	// if (TS.TNUAS.eligibility_func()) { result.tamilnadu.push("TNUAS") }
-	// if (TS.TNMAS.eligibility_func()) { result.tamilnadu.push("TNMAS") }
-	// if (TS.TNCMCHIS.eligibility_func()) { result.tamilnadu.push("TNCMCHIS") }
-	// if (TS.TNMUTS.eligibility_func()) { result.tamilnadu.push("TNMUTS") }
-	// if (TS.TNZTBTSW.eligibility_func()) { result.tamilnadu.push("TNZTBTSW") }
-	// if (TS.TNUYEGP.eligibility_func()) { result.tamilnadu.push("TNUYEGP") }
-	// if (TS.TNNEEDS.eligibility_func()) { result.tamilnadu.push("TNNEEDS") }
-	// if (TS.TNCMFP.eligibility_func()) { result.tamilnadu.push("TNCMFP") }
+	if (TS.TNAU.eligibility_func(annual_household_income)) { result.tamilnadu.push("TNAU") }
+	if (TS.TNAKT.eligibility_func(annual_household_income)) { result.tamilnadu.push("TNAKT") }
+	if (TS.TNATWSWW.eligibility_func(gender, annual_household_income, highest_education, driving_license)) { result.tamilnadu.push("TNATWSWW") }
+	if (TS.TNMRAHEAS.eligibility_func(gender, govt_school_612, pursuing_undergrad)) { result.tamilnadu.push("TNMRAHEAS") }
+	if (TS.TNUAS.eligibility_func(age, annual_household_income, reservation, disabled)) { result.tamilnadu.push("TNUAS") }
+	if (TS.TNMAS.eligibility_func(age, gender, fiance_age)) { result.tamilnadu.push("TNMAS") }
+	if (TS.TNCMCHIS.eligibility_func(annual_income)) { result.tamilnadu.push("TNCMCHIS") }
+	if (TS.TNMUTS.eligibility_func(age, gender, annual_income, wet_land_area, dry_land_area, electricity_consumption)) { result.tamilnadu.push("TNMUTS") }
+	if (TS.TNZTBTSW.eligibility_func(gender)) { result.tamilnadu.push("TNZTBTSW") }
+	if (TS.TNUYEGP.eligibility_func(highest_education, annual_income, age, gender)) { result.tamilnadu.push("TNUYEGP") }
+	if (TS.TNNEEDS.eligibility_func(gender, reservation, age, highest_education, ex_serviceman, disabled, vocational_training, iti_graduate)) { result.tamilnadu.push("TNNEEDS") }
+	if (TS.TNCMFP.eligibility_func(age, highest_education, tamil_status)) { result.tamilnadu.push("TNCMFP") }
 
 	return result
 

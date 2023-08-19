@@ -11,7 +11,6 @@ const initialValues: FormValues = {
   reservation: "",
   disabled: "",
   ex_serviceman: "",
-  driving_license: "",
   marital_status: "",
   fiance_age: "",
   pregnant: "",
@@ -51,7 +50,7 @@ const FianceAgeQuestion = () => {
   if (marital_status === "engaged") {
     return (
       <>
-        <label className="formik-label" htmlFor="">What is your fiancé&aposs; age?</label>
+        <label className="formik-label" htmlFor="">What is your fiancé&apos;s age?</label>
         <Field className="formik-input" type="number" min={1} name="fiance_age" />
       </>
     )
@@ -66,7 +65,7 @@ const ChildrenQuestion = () => {
       <>
         {[...Array(children)].map((v,i) => (
           <div className="pl-[24px] flex flex-col" key={`child_${i}`}>
-            <label className="formik-label">What is your {numberNames[i]} child&aposs; age and gender?</label>
+            <label className="formik-label">What is your {numberNames[i]} child&apos;s age and gender?</label>
             <Field className="formik-input mb-[4px]" type="number" min={0} max={120} name={`child_age_${i+1}`} />
             <div className="flex flex-row gap-x-[12px]">
               <label className="formik-radio-group">Male
@@ -102,6 +101,90 @@ const PregnancyAgeQuestion = () => {
           </label>
           <label className="formik-radio-group">No
             <Field className="formik-radio" type="radio" name="pregnant" value="no" />
+            <span className="formik-radio-button"></span>
+          </label>
+        </div>
+      </>
+    )
+  }
+}
+
+const Govt612Question = () => {
+  const { values: { gender, highest_education } } = useFormikContext<FormValues>()
+  if (gender === "female" && (highest_education === "class_12" || highest_education === "undergraduate" || highest_education === "postgraduate" || highest_education === "diploma")) {
+    return (
+      <>
+        <label className="formik-label" htmlFor="">Did you study in a Tamil Nadu government school from classes 6-12?</label>
+        <div className="flex flex-row gap-x-[12px]">
+          <label className="formik-radio-group">Yes
+            <Field className="formik-radio" type="radio" name="govt_school_612" value="yes" />
+            <span className="formik-radio-button"></span>
+          </label>
+          <label className="formik-radio-group">No
+            <Field className="formik-radio" type="radio" name="govt_school_612" value="no" />
+            <span className="formik-radio-button"></span>
+          </label>
+        </div>
+      </>
+    )
+  }
+}
+
+const PursuingUndergradQuestion = () => {
+  const { values: { gender, govt_school_612 } } = useFormikContext<FormValues>()
+  if (gender === "female" && govt_school_612 === "yes") {
+    return (
+      <>
+        <label className="formik-label" htmlFor="">Are you currently pursuing an undergraduate program?</label>
+        <div className="flex flex-row gap-x-[12px]">
+          <label className="formik-radio-group">Yes
+            <Field className="formik-radio" type="radio" name="pursuing_undergrad" value="yes" />
+            <span className="formik-radio-button"></span>
+          </label>
+          <label className="formik-radio-group">No
+            <Field className="formik-radio" type="radio" name="pursuing_undergrad" value="no" />
+            <span className="formik-radio-button"></span>
+          </label>
+        </div>
+      </>
+    )
+  }
+}
+
+const ITIQuestion = () => {
+  const { values: { highest_education } } = useFormikContext<FormValues>()
+  if (highest_education === "undergraduate" || highest_education === "postgraduate" || highest_education === "diploma") {
+    return (
+      <>
+        <label className="formik-label" htmlFor="">Are you an ITI (Industrial Training Institutes) graduate?</label>
+        <div className="flex flex-row gap-x-[12px]">
+          <label className="formik-radio-group">Yes
+            <Field className="formik-radio" type="radio" name="iti_graduate" value="yes" />
+            <span className="formik-radio-button"></span>
+          </label>
+          <label className="formik-radio-group">No
+            <Field className="formik-radio" type="radio" name="iti_graduate" value="no" />
+            <span className="formik-radio-button"></span>
+          </label>
+        </div>
+      </>
+    )
+  }
+}
+
+const TamilStatusQuestion = () => {
+  const { values: { highest_education } } = useFormikContext<FormValues>()
+  if (highest_education === "undergraduate" || highest_education === "postgraduate") {
+    return (
+      <>
+        <label className="formik-label" htmlFor="">Do you have a professional fluency in Tamil?</label>
+        <div className="flex flex-row gap-x-[12px]">
+          <label className="formik-radio-group">Yes
+            <Field className="formik-radio" type="radio" name="tamil_status" value="yes" />
+            <span className="formik-radio-button"></span>
+          </label>
+          <label className="formik-radio-group">No
+            <Field className="formik-radio" type="radio" name="tamil_status" value="no" />
             <span className="formik-radio-button"></span>
           </label>
         </div>
@@ -246,18 +329,6 @@ export default function Home() {
                 </label>
               </div>
               
-              <label className="formik-label" htmlFor="drivers_license">Do you have a driver&aposs; license?</label>
-              <div className="flex flex-row gap-x-[12px]">
-                <label className="formik-radio-group">Yes
-                  <Field className="formik-radio" type="radio" name="drivers_license" value="yes" />
-                  <span className="formik-radio-button"></span>
-                </label>
-                <label className="formik-radio-group">No
-                  <Field className="formik-radio" type="radio" name="drivers_license" value="no" />
-                  <span className="formik-radio-button"></span>
-                </label>
-              </div>
-              
               <label className="formik-label" htmlFor="marital_status">What is your marital status?</label>
               <Field className="formik-input" component="select" name="marital_status">
                 <option value="single">Single</option>
@@ -349,18 +420,6 @@ export default function Home() {
               <br />
 
 
-              <label className="formik-label" htmlFor="">Did you study in a Tamil Nadu government school from classes 6-12?</label>
-              <div className="flex flex-row gap-x-[12px]">
-                <label className="formik-radio-group">Yes
-                  <Field className="formik-radio" type="radio" name="govt_school_612" value="yes" />
-                  <span className="formik-radio-button"></span>
-                </label>
-                <label className="formik-radio-group">No
-                  <Field className="formik-radio" type="radio" name="govt_school_612" value="no" />
-                  <span className="formik-radio-button"></span>
-                </label>
-              </div>
-              
               <label className="formik-label" htmlFor="">What is your highest education level?</label>
               <Field className="formik-input" component="select" name="highest_education">
                 <option value="below_class_8">Below Class 8</option>
@@ -371,6 +430,12 @@ export default function Home() {
                 <option value="postgraduate">Postgraduate</option>
                 <option value="diploma">Diploma</option>
               </Field>
+
+              <Govt612Question />
+
+              <PursuingUndergradQuestion />
+              
+              <ITIQuestion />
               
               <label className="formik-label" htmlFor="">Do you have vocational training?</label>
               <div className="flex flex-row gap-x-[12px]">
@@ -384,29 +449,7 @@ export default function Home() {
                 </label>
               </div>
               
-              <label className="formik-label" htmlFor="">Are you an ITI (Industrial Training Institutes) graduate?</label>
-              <div className="flex flex-row gap-x-[12px]">
-                <label className="formik-radio-group">Yes
-                  <Field className="formik-radio" type="radio" name="iti_graduate" value="yes" />
-                  <span className="formik-radio-button"></span>
-                </label>
-                <label className="formik-radio-group">No
-                  <Field className="formik-radio" type="radio" name="iti_graduate" value="no" />
-                  <span className="formik-radio-button"></span>
-                </label>
-              </div>
-              
-              <label className="formik-label" htmlFor="">Do you have a professional fluency in Tamil?</label>
-              <div className="flex flex-row gap-x-[12px]">
-                <label className="formik-radio-group">Yes
-                  <Field className="formik-radio" type="radio" name="tamil_status" value="yes" />
-                  <span className="formik-radio-button"></span>
-                </label>
-                <label className="formik-radio-group">No
-                  <Field className="formik-radio" type="radio" name="tamil_status" value="no" />
-                  <span className="formik-radio-button"></span>
-                </label>
-              </div>
+              <TamilStatusQuestion />
               
 
               <br />

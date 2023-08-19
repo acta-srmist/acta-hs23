@@ -2,14 +2,34 @@ import "./globals.css"
 import { Inter } from "next/font/google"
 import Script from "next/script"
 import Link from "next/link"
+import { MongoClient } from "mongodb"
+import { log } from "console"
 
 const inter = Inter({ subsets: ["latin"] })
+
+const client = new MongoClient("mongodb://localhost:27017/?directConnection=true")
+const db = client.db('acta')
+const viewsCollection = db.collection('views')
+
+var views: number
+
+const addView = async () => {
+  try {
+    var result = await viewsCollection.insertOne({})
+    views = await viewsCollection.countDocuments()
+    console.log(views)
+  } catch (err) {
+    console.log(err)
+  }
+}
+addView()
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
   return (
     <html lang="en">
       <head>
@@ -57,11 +77,23 @@ export default function RootLayout({
           </main>
 
           <footer className="bg-black text-white">
-            <div className="px-[18px] lg:px-0 my-[56px] max-w-5xl mx-auto w-full">
-              <h1 className="font-bold text-md sm:text-lg tracking-wider">TEAM ACTA © 2023</h1>
-              <p className="text-md mt-[6px] text-sm sm:text-base leading-tight">Aditya Kulshrestha</p>
-              <p className="text-md mt-[6px] text-sm sm:text-base leading-tight">Vaibhav Janga</p>
-              <p className="text-md mt-[6px] text-sm sm:text-base leading-tight">Rohit Gupta</p>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center px-[18px] lg:px-0 my-[56px] max-w-5xl mx-auto w-full">
+              <div>
+                <div className="flex flex-row items-center gap-x-[9px] pb-[12px]">
+                  <img src="/acta-light.svg" alt="acta_light_svg" className="h-[28px]" />
+                  <h1 className="font-bold text-md sm:text-lg tracking-wider">© 2023</h1>
+                </div>
+                <p className="text-md mt-[6px] text-sm sm:text-base leading-tight">Aditya Kulshrestha</p>
+                <p className="text-md mt-[6px] text-sm sm:text-base leading-tight">Vaibhav Janga</p>
+                <p className="text-md mt-[6px] text-sm sm:text-base leading-tight">Rohit Gupta</p>
+              </div>
+
+              {views && (
+                <div className="flex flex-col">
+                  <span className="font-light tracking-wider text-white sm:text-right mt-[60px] sm:mt-0">View Count</span>
+                  <span className="font-bold text-xl text-white sm:text-right mt-[6px]">{views}</span>
+                </div>
+              )}
             </div>
           </footer>
         </div>

@@ -387,8 +387,8 @@ const SCHEMES = {
 			},
 			helplines: ["044 2817 3412"],
 			website: "",
-			eligibility_func: (gender: string, driving_license: boolean, annual_household_income: number, highest_education: string) => {
-				if (gender === "female" && driving_license && annual_household_income < 250000 && highest_education === "class_8") {
+			eligibility_func: (gender: string, annual_household_income: number, highest_education: string) => {
+				if (gender === "female" && annual_household_income < 250000 && (highest_education === "class_8" || highest_education === "class_10" || highest_education === "class_12" || highest_education === "undergraduate" || highest_education === "postgraduate" || highest_education === "diploma")) {
 					return true
 				}
 			}
@@ -401,7 +401,7 @@ const SCHEMES = {
 			},
 			helplines: ["91500 56805", "91500 56809"],
 			website: "https://penkalvi.tn.gov.in/",
-			eligibility_func: (gender: string, govt_school_612: boolean, pursuing_undergrad: boolean) => {
+			eligibility_func: (gender: string, govt_school_612?: boolean, pursuing_undergrad?: boolean) => {
 				if (gender === "female" && govt_school_612 && pursuing_undergrad) {
 					return true
 				}
@@ -416,7 +416,7 @@ const SCHEMES = {
 			},
 			helplines: ["044 2250 0900", "044 2250 0911"],
 			website: "https://tnvelaivaaippu.gov.in/",
-			eligibility_func: (age: number, annual_household_income: number, disabled: boolean, reservation: string) => {
+			eligibility_func: (age: number, annual_household_income: number, reservation: string, disabled?: boolean) => {
 				if ((reservation === "sc" || reservation === "st" || disabled) && age <= 45) {
 					return true
 				}
@@ -468,7 +468,10 @@ const SCHEMES = {
 			helplines: ["94449 95299", "95501 45357"],
 			website: "",
 			eligibility_func: (age: number, gender: string, annual_income: number, wet_land_area: number, dry_land_area: number, electricity_consumption: number) => {
-				if (age > 18 && gender === "female" && annual_income < 250000 && wet_land_area < 5 && dry_land_area < 10 && electricity_consumption < 3600) {}
+				if (age > 18 && gender === "female" && annual_income < 250000 && wet_land_area < 5 && dry_land_area < 10 && electricity_consumption < 3600) {
+					return true
+				}
+				return false
 			}
 		},
 		TNZTBTSW: {
@@ -515,7 +518,7 @@ const SCHEMES = {
 			},
 			helplines: [],
 			website: "https://www.msmetamilnadu.tn.gov.in/needs.php",
-			eligibility_func: (gender: string, reservation: string, ex_serviceman: boolean, disabled: boolean, age: number, highest_education: string, vocational_training: boolean, iti_graduate: boolean) => {
+			eligibility_func: (gender: string, reservation: string, age: number, highest_education: string, ex_serviceman?: boolean, disabled?: boolean, vocational_training?: boolean, iti_graduate?: boolean) => {
 				if (age >= 21 && (highest_education === "undergraduate" || highest_education === "postgraduate" || highest_education === "diploma" || iti_graduate || vocational_training)) {
 					if ((gender === "female" || gender === "transgender" || reservation === "sc" || reservation === "st" || reservation === "obc" || disabled || ex_serviceman) && age <= 45) {
 						return true
@@ -536,7 +539,7 @@ const SCHEMES = {
 			},
 			helplines: ["044 2567 1024"],
 			website: "https://tn.gov.in/tncmfp/",
-			eligibility_func: (age: number, tamil_status: boolean, highest_education: string) => {
+			eligibility_func: (age: number, highest_education: string, tamil_status?: boolean) => {
 				if (age <= 30 && age >= 22 && tamil_status && (highest_education === "undergraduate" || highest_education === "postgraduate")) {
 					return true
 				}
