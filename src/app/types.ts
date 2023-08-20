@@ -4,8 +4,8 @@ export interface FormValues {
   reservation: string
   disabled: string
   ex_serviceman: string
-  marital_status: string | number
-  fiance_age: number
+  marital_status: string
+  fiance_age: string | number
   children: string | number,
   child_age_1?: string | number
   child_gender_1?: number

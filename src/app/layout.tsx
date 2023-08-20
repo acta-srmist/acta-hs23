@@ -1,34 +1,32 @@
+"use client"
 import "./globals.css"
+import { createContext, useState } from "react"
 import { Inter } from "next/font/google"
 import Script from "next/script"
 import Link from "next/link"
-import { MongoClient } from "mongodb"
-import { log } from "console"
+// import { MongoClient } from "mongodb"
 
 const inter = Inter({ subsets: ["latin"] })
 
-const client = new MongoClient("mongodb://localhost:27017/?directConnection=true")
-const db = client.db('acta')
-const viewsCollection = db.collection('views')
-
-var views: number
-
-const addView = async () => {
-  try {
-    var result = await viewsCollection.insertOne({})
-    views = await viewsCollection.countDocuments()
-    console.log(views)
-  } catch (err) {
-    console.log(err)
-  }
-}
-addView()
+export const LanguageContext = createContext({})
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const [lang, setLang] = useState("en")
+  const langs = ["en", "hi", "ta"]
+  const navbarText = (code: string) => {
+    switch (code) {
+      case "en":
+        return "ENG"
+      case "hi":
+        return "हिंदी"
+      case "ta":
+        return "தமிழ்"
+    }
+  }
 
   return (
     <html lang="en">
@@ -54,8 +52,10 @@ export default function RootLayout({
         
         <Script src="https://kit.fontawesome.com/b0435a4746.js" crossOrigin="anonymous"></Script>
       </head>
+
+      <LanguageContext.Provider value={{lang, setLang}}>
       <body className={inter.className}>
-         <div className="flex min-h-screen flex-col justify-between">
+        <div className="flex min-h-screen flex-col justify-between">
           <main className="flex flex-col mb-[60px]">
             <div className="w-full lg:px-0 px-[18px] py-[18px] bg-white/70 shadow-md backdrop-blur-xl sticky top-0 z-20">
               <div className="w-full flex flex-row justify-between items-center max-w-5xl mx-auto">
@@ -66,8 +66,12 @@ export default function RootLayout({
                 </div>
                 <div className="flex flex-row gap-x-[24px] items-center">
                   {/* <Clock className="text-sm" format={'ddd, D MMM YYYY HH:mm:ss'} ticking={true} timezone={'Asia/Kolkata'} /> */}
+                  <Link href="/"><span className="text-md leading-tight underline-offset-2 decoration-2 hover:no-underline underline text-primary">Home</span></Link>
                   <Link href="/about"><span className="text-md leading-tight underline-offset-2 decoration-2 hover:no-underline underline text-primary">About</span></Link>
-                  <span className="cursor-pointer text-md leading-tight font-semibold hover:bg-primary px-[18px] py-[6px] rounded-full bg-primary/90 text-white/90">ENG</span>
+                  <span onClick={() => {
+                    const i = langs.indexOf(lang) === 2 ? 0 : langs.indexOf(lang) + 1
+                    setLang(langs[i])
+                  }} className="w-[72px] text-center cursor-pointer text-md leading-tight font-semibold hover:bg-primary px-[18px] py-[6px] rounded-full bg-primary/90 text-white/90">{navbarText(lang)}</span>
                 </div>
               </div>
             </div>
@@ -88,16 +92,17 @@ export default function RootLayout({
                 <p className="text-md mt-[6px] text-sm sm:text-base leading-tight">Rohit Gupta</p>
               </div>
 
-              {views && (
+              {/* {views && (
                 <div className="flex flex-col">
                   <span className="font-light tracking-wider text-white sm:text-right mt-[60px] sm:mt-0">View Count</span>
                   <span className="font-bold text-xl text-white sm:text-right mt-[6px]">{views}</span>
                 </div>
-              )}
+              )} */}
             </div>
           </footer>
         </div>
       </body>
+      </LanguageContext.Provider>
     </html>
   )
 }

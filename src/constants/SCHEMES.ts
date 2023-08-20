@@ -1,99 +1,26 @@
-// age
-// gender
-// reservation
-// disabled
-// ex_serviceman
-// driving_license
-// married
-// fiance_age
-// children_ages
-// pregnant
-// 
-// income
-// - freq
-// - amt
-// [NF] annual_income
-// annual_household_income
-// male_members
-// earning_members
-// able_bodied_members
-// electricity_consumption
-// 
-// rural_urban_status
-// land_owning
-// cultivable_land
-// wet_land_area
-// dry_land_area
-// kuccha_one_room
-// 
-// govt_school_612
-// highest_education
-// vocational_training
-// iti_graduate
-// pursuing_undergrad
-// tamil_status
-// 
-// default_status
-// bank_account
-// occupations
-// occupation_sector
-// unorganised_sector
-// swp_status
-// 
-// 
-// Assembler
-// Assistant
-// Attendant
-// Beggar
-// Conductor
-// Construction Worker
-// Coolie
-// Delivery Assistant
-// Domestic Worker
-// Driver
-// Electricians
-// Gardeners
-// Helper
-// Labourer
-// Mason
-// Mechanic
-// Painter
-// Peon
-// Plumber
-// Ragpickers
-// Repair Worker
-// Rickshaw Driver
-// Sanitation Worker
-// Security Guard
-// Shopkeeper
-// Sweepers
-// Transport Worker
-// Waiter
-// Washerman
-// Welder
-// 
-// Handicraftsman
-// Restoration and Repair Shop Owner
-// Self Employed Entrepreneur
-// Small Scale Manufacturer
-// Truck Owners
-// 
-// Agriculture Sector
-// Food Production Industry
-// Service-based Companies
-
-
-
 const SCHEMES = {
 	national: {
 		NASUIS: {
 			name: {
 				en: "Stand Up India Scheme",
-				hi: "",
-				ta: "",
+				hi: "स्टैंड अप इंडिया योजना",
+				ta: "இந்திய திட்டத்தை நிற்கவும்",
+			},
+			benefits: {
+				en: [
+					"The objective of the stand up india scheme is to facilitate bank loans between Rs. 10 lakh and 1 Crore to at least one scheduled caste (SC) or scheduled tribe (ST) borrower and at least one women borrower per bank branch for setting up a greenfield enterprise.",
+					"The rate of interest would be lowest applicable rate of the bank for that category (rating category) not to exceed (base rate(MCLR) + 3% + Tenor premium)",
+					"Loan is repayable in 7 years with a maximum moratorium period of 18 months."
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["1800 180 1111"],
-			website: "",
+			website: "https://www.standupmitra.in/Home/SUISchemes",
 			eligibility_func: (reservation: string, age: number, gender: string, default_status?: boolean) => {
 				if ((reservation === "sc" || reservation === "st" || gender === "female") && age && age >= 18 && !default_status) {
 					return true
@@ -104,8 +31,19 @@ const SCHEMES = {
 		NAPMVVY: {
 			name: {
 				en: "Pradhan Mantri Vaya Vandana Yojana",
-				hi: "",
-				ta: "",
+				hi: "प्रधान मांद्री वेय वंदना योजना",
+				ta: "பிரதான் மாண்ட்ரி வேயா வாண்டனா யோஜானா",
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["022 6781 9281", "1800 227 717"],
 			website: "",
@@ -119,8 +57,28 @@ const SCHEMES = {
 		NAMSSS: {
 			name: {
 				en: "Mahila Samman Savings Scheme",
-				hi: "",
-				ta: "",
+				hi: "महिला सम्मान बचत योजना",
+				ta: "மஹிலா சாம்மன் சேமிப்பு திட்டம்",
+			},
+			benefits: {
+				en: [
+					"Offers a Rs. 7.5% interest rate on deposits as compared to FD’s offered from majority of banks",
+					"It is a 2-Year programme (April 2023-March 2025)",
+					"The MSSC certificate will allow you to make partial withdrawals",
+					"A maximum of Rs. 2 lakh can be deposited"
+				],
+				hi: [
+					"रुपये की पेशकश करता है. अधिकांश बैंकों द्वारा दी जाने वाली एफडी की तुलना में जमा पर 7.5% ब्याज दर",
+					"यह 2 साल का कार्यक्रम है (अप्रैल 2023-मार्च 2025)",
+					"एमएसएससी प्रमाणपत्र आपको आंशिक निकासी करने की अनुमति देगा",
+					"अधिकतम 2 लाख रुपये जमा किये जा सकते हैं"
+				],
+				ta: [
+					"ரூ. பெரும்பான்மையான வங்கிகளிடமிருந்து வழங்கப்படும் எஃப்.டி உடன் ஒப்பிடும்போது வைப்புத்தொகை மீதான 7.5% வட்டி விகிதம்",
+					"இது 2 ஆண்டு திட்டம் (ஏப்ரல் 2023-மார்ச் 2025)",
+					"எம்.எஸ்.எஸ்.சி சான்றிதழ் ஓரளவு திரும்பப் பெற உங்களை அனுமதிக்கும் ",
+					"அதிகபட்சம் ரூ .2 லக்கை டெபாசிட் செய்யலாம்"
+				]
 			},
 			helplines: ["1800 103 1906"],
 			website: "",
@@ -134,8 +92,19 @@ const SCHEMES = {
 		NAPMKSNY: {
 			name: {
 				en: "Pradhan Mantri Kissan Samman Nidhi Yojana",
-				hi: "",
-				ta: "",
+				hi: "प्रधानमंत्री किसान सम्मान निधि योजना",
+				ta: "பிரதான் மாண்ட்ரி கிசான் சாம்மன் நிதி யோஜ்னா",
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["011 2430 0606"],
 			website: "https://pmkisan.gov.in",
@@ -149,8 +118,19 @@ const SCHEMES = {
 		NAPMKUSEU: {
 			name: {
 				en: "Pradhan Mantri Kissan Urjan Suraksha Eavm Utthan Mahabhiyan",
-				hi: "",
-				ta: "",
+				hi: "प्रधानमंत्री किसान ऊर्जा सुरक्षा एवं उड़ान महपियां",
+				ta: "பிரதமர் கிசான் உர்ஜன் சுரக்ஷா எவாம் உதான் மகாபியான்",
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["011 2436 5666"],
 			website: "https://pmkusum.mnre.gov.in/landing.html",
@@ -164,8 +144,19 @@ const SCHEMES = {
 		NAABYHS: {
 			name: {
 				en: "Ayushman Bharat Yojana Health Scheme",
-				hi: "",
-				ta: "",
+				hi: "आयुष्मान भारत योजना स्वास्थ्य योजना",
+				ta: "ஆயுஷ்மேன் பாரத் யோஜானா சுகாதார திட்டம்",
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: [],
 			website: "https://nha.gov.in/PM-JAY",
@@ -217,8 +208,19 @@ const SCHEMES = {
 		NAPMMVY: {
 			name: {
 				en: "Pradhan Mantri Matritva Vandana Yojana",
-				hi: "",
-				ta: "",
+				hi: "पीएम मातृत्व वंदना योजना",
+				ta: "மாட்ரிட்வா வாண்டனா யோஜானா",
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["011 2338 2393"],
 			website: "https://pmmvy.nic.in",
@@ -232,8 +234,19 @@ const SCHEMES = {
 		NAPMFBY: {
 			name: {
 				en: "Pradhan Mantri Fasal Bima Yojana",
-				hi: "",
-				ta: "",
+				hi: "पीएम फसल बीमा योजना",
+				ta: "அடிப்படை பிமா யோஜானா",
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["1800 200 7710"],
 			website: "https://pmfby.gov.in",
@@ -250,6 +263,17 @@ const SCHEMES = {
 				hi: "सुकन्या समृद्धि खाता योजना",
 				ta: "பெண் செழிப்பு திட்டம்"
 			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
+			},
 			helplines: ["1800 266 6868"],
 			website: "",
 			eligibility_func: (gender: string, age: number) => {
@@ -262,11 +286,22 @@ const SCHEMES = {
 		NADBT: {
 			name: {
 				en: "Direct Bank Transfer",
-				hi: "",
-				ta: "",
+				hi: "बैंक में सीधे अंतरण",
+				ta: "நேரடி வங்கி பரிமாற்றம்",
 			},
-			helplines: [""],
-			website: "",
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
+			},
+			helplines: ["011 2374 0714"],
+			website: "https://dbtbharat.gov.in/static-page-content/spagecont?id=8",
 			eligibility_func: (income?: { freq: string, amt: number }) => {
 				if ((income?.freq === "daily" && income?.amt < 150) || (income?.freq === "monthly" && income?.amt < 1300)) {
 					return true
@@ -277,8 +312,19 @@ const SCHEMES = {
 		NAPMSBY: {
 			name: {
 				en: "Pradhan Mantri Suraksha Bima Yojana",
-				hi: "",
-				ta: "",
+				hi: "प्रधानमंत्री सुरक्षा भीम योजना",
+				ta: "பிரதான் மாண்ட்ரி சுராக்ஷா பிமா யோஜானா",
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["011 2336 2129", "011 2336 2782"],
 			website: "https://financialservices.gov.in/insurance-divisions/Government-Sponsored-Socially-Oriented-Insurance-Schemes/Pradhan-Mantri-Suraksha-Bima-Yojana(PMSBY)",
@@ -292,8 +338,19 @@ const SCHEMES = {
 		NAAPY: {
 			name: {
 				en: "Atal Pension Yojana",
-				hi: "",
-				ta: "",
+				hi: "अटल पेंशन योजना",
+				ta: "அடல் ஓய்வூதியம் யோஜானா",
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["022 2499 3499"],
 			website: "https://www.npscra.nsdl.co.in/scheme-details.php",
@@ -307,8 +364,19 @@ const SCHEMES = {
 		NAPMMY: {
 			name: {
 				en: "Pradhan Mantri Mudra Yojana",
-				hi: "",
-				ta: "",
+				hi: "प्रधान मुद्रा योजना",
+				ta: "பிரதான் மந்திரி முத்ரா யோஜனா",
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["1800 180 1111"],
 			website: "https://www.mudra.org.in",
@@ -335,8 +403,19 @@ const SCHEMES = {
 		NAPMJJBY: {
 			name: {
 				en: "Pradhan Mantri Jeevan Jyoti Bima Yojana",
-				hi: "",
-				ta: "",	
+				hi: "प्रधान मोंद्री जीवन ज्योति बीमा योजना",
+				ta: "பிரதான் மாண்ட்ரி ஜீவன் ஜியோட்டி பிமா யோஜானா",	
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["1800 180 1111"],
 			website: "https://financialservices.gov.in/insurance-divisions/Government-Sponsored-Socially-Oriented-Insurance-Schemes/Pradhan-Mantri-Jeevan-Jyoti-Bima-Yojana(PMJJBY)",
@@ -352,8 +431,19 @@ const SCHEMES = {
 		TNAU: {
 			name: {
 				en: "Amma Unavagam",
-				hi: "",
-				ta: ""
+				hi: "अम्मा उनावगम",
+				ta: "அம்மா உணவகம்"
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["044 2536 9444"],
 			website: "",
@@ -367,10 +457,21 @@ const SCHEMES = {
 		TNAKT: {
 			name: {
 				en: "Amma Kudineer Thittam",
-				hi: "",
-				ta: ""
+				hi: "अम्मा कुदिनेर थित्तम",
+				ta: "அம்மா குடிநீர் திட்டம்"
 			},
-			helplines: [""],
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
+			},
+			helplines: [],
 			website: "",
 			eligibility_func: (annual_household_income: number) => {
 				if (annual_household_income < 30000) {
@@ -382,8 +483,19 @@ const SCHEMES = {
 		TNATWSWW: {
 			name: {
 				en: "Amma Two-wheeler Scheme for Working Women",
-				hi: "",
-				ta: ""
+				hi: "कामकाजी महिलाओं के लिए अम्मा दोपहिया वाहन योजना",
+				ta: "பணிபுரியும் பெண்களுக்கான அம்மா இருசக்கர வாகனத் திட்டம்"
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["044 2817 3412"],
 			website: "",
@@ -396,8 +508,19 @@ const SCHEMES = {
 		TNMRAHEAS: {
 			name: {
 				en: "Moovalur Ramamirtham Ammaiyer Higher Education Assurance Scheme",
-				hi: "",
-				ta: ""
+				hi: "मूवलुर रामामिर्थम अम्मैयार उच्च शिक्षा आश्वासन योजना",
+				ta: "மூவலூர் ராமாமிர்தம் அம்மையார் உயர்கல்வி உறுதி திட்டம்"
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["91500 56805", "91500 56809"],
 			website: "https://penkalvi.tn.gov.in/",
@@ -411,8 +534,19 @@ const SCHEMES = {
 		TNUAS: {
 			name: {
 				en: "Unemployment Assistance Scheme",
-				hi: "",
-				ta: ""
+				hi: "तमिलनाडु बेरोजगारी सहायता योजना",
+				ta: "தமிழ்நாடு வேலைவாய்ப்பின்மை உதவித் திட்டம்"
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["044 2250 0900", "044 2250 0911"],
 			website: "https://tnvelaivaaippu.gov.in/",
@@ -429,8 +563,19 @@ const SCHEMES = {
 		TNMAS: {
 			name: {
 				en: "Marriage Assistance Scheme",
-				hi: "",
-				ta: ""
+				hi: "विवाह सहायता योजना",
+				ta: "தமிழ்நாடு திருமண உதவித் திட்டம்"
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["044 2435 1891"],
 			website: "https://www.tnsocialwelfare.tn.gov.in/en/specilisationswomen-welfare/marriage-assistance-schemes",
@@ -447,8 +592,19 @@ const SCHEMES = {
 		TNCMCHIS: {
 			name: {
 				en: "Chief Minister Comprehensive Health Insurance Scheme",
-				hi: "",
-				ta: ""
+				hi: "मुख्यमंत्री समग्र स्वास्थ्य बीमा योजना",
+				ta: "முதலமைச்சரின் விரிவான மருத்துவக் காப்பீட்டுத் திட்டம்"
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["1800 425 3993"],
 			website: "https://www.cmchistn.com",
@@ -462,8 +618,19 @@ const SCHEMES = {
 		TNMUTS: {
 			name: {
 				en: "Magalir Urimai Thogai Scheme",
-				hi: "",
-				ta: ""
+				hi: "मगलिर उरीमाई थोगाई योजना",
+				ta: "மகளிர் உரிமை தோகை திட்டம்"
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["94449 95299", "95501 45357"],
 			website: "",
@@ -480,6 +647,17 @@ const SCHEMES = {
 				hi: "महिलाओं के लिए जीरो टिकट बस यात्रा योजना",
 				ta: "பெண்களுக்கான தமிழ்நாடு ஜீரோ டிக்கெட் பேருந்து பயணத் திட்டம்"
 			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
+			},
 			helplines: [],
 			website: "",
 			eligibility_func: (gender: string) => {
@@ -494,6 +672,17 @@ const SCHEMES = {
 				en: "Unemployed Youth Employment Generation Programme",
 				hi: "बेरोजगार युवा रोजगार सृजन योजना",
 				ta: "வேலைவாய்ப்பற்ற இளைஞர் வேலைவாய்ப்பு உருவாக்கத் திட்டம்"
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: [""],
 			website: "",
@@ -513,8 +702,19 @@ const SCHEMES = {
 		TNNEEDS: {
 			name: {
 				en: "New Entrepreneur cum Enterprise Development Scheme",
-				hi: "",
-				ta: ""
+				hi: "नवीन उद्यमी सह उद्यम विकास योजना",
+				ta: "புதிய தொழில்முனைவோர் மற்றும் நிறுவன மேம்பாட்டுத் திட்டம்"
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: [],
 			website: "https://www.msmetamilnadu.tn.gov.in/needs.php",
@@ -534,8 +734,19 @@ const SCHEMES = {
 		TNCMFP: {
 			name: {
 				en: "Chief Minister Fellowship Programme",
-				hi: "",
-				ta: ""
+				hi: "मुख्यमंत्री फ़ेलोशिप कार्यक्रम",
+				ta: "முதலமைச்சர் பெல்லோஷிப் திட்டம்"
+			},
+			benefits: {
+				en: [
+					""
+				],
+				hi: [
+					""
+				],
+				ta: [
+					""
+				]
 			},
 			helplines: ["044 2567 1024"],
 			website: "https://tn.gov.in/tncmfp/",
