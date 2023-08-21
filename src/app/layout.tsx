@@ -1,12 +1,9 @@
 "use client"
 import "./globals.css"
 import { createContext, useState } from "react"
-import { Inter } from "next/font/google"
 import Script from "next/script"
 import Link from "next/link"
 import Head from "next/head"
-
-const inter = Inter({ subsets: ["latin"] })
 
 export const LanguageContext = createContext({})
 
@@ -52,10 +49,9 @@ export default function RootLayout({
         <meta property="twitter:image" content="https://actahs23.adikul.dev/thumbnail.jpg" />
         
       </head>
-      <Script src="https://kit.fontawesome.com/b0435a4746.js" crossOrigin="anonymous"></Script>
 
       <LanguageContext.Provider value={{lang, setLang}}>
-      <body className={inter.className}>
+      <body>
         <div className="flex min-h-screen flex-col justify-between">
           <main className="flex flex-col mb-[60px]">
             <div className="w-full lg:px-0 px-[18px] py-[18px] bg-white/70 shadow-md backdrop-blur-xl sticky top-0 z-20">
@@ -102,6 +98,7 @@ export default function RootLayout({
             </div>
           </footer>
         </div>
+        <Script src="https://kit.fontawesome.com/b0435a4746.js" crossOrigin="anonymous"></Script>
       </body>
       </LanguageContext.Provider>
     </html>
