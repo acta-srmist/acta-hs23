@@ -29,22 +29,22 @@ export default function RootLayout({
     <html lang={lang}>
       <head>
         {/* Primary Meta Tags */}
-        <title>Team Acta — Hack Sustain 2023</title>
-        <meta name="title" content="Team Acta — Hack Sustain 2023" />
+        <title>PMJDY Eligibility Tool — Acta</title>
+        <meta name="title" content="PMJDY Eligibility Tool — Acta" />
         <meta name="description" content="" />
         <link rel="icon" type="image/x-icon" href="/favicon.png" />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://actahs23.adikul.dev/" />
-        <meta property="og:title" content="Team Acta — Hack Sustain 2023" />
+        <meta property="og:title" content="PMJDY Eligibility Tool — Acta" />
         <meta property="og:description" content="" />
         <meta property="og:image" content="https://actahs23.adikul.dev/thumbnail.jpg" />
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://actahs23.adikul.dev/" />
-        <meta property="twitter:title" content="Team Acta — Hack Sustain 2023" />
+        <meta property="twitter:title" content="PMJDY Eligibility Tool — Acta" />
         <meta property="twitter:description" content="" />
         <meta property="twitter:image" content="https://actahs23.adikul.dev/thumbnail.jpg" />
         

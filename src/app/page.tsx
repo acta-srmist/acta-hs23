@@ -966,7 +966,7 @@ export default function Home() {
     <>
       <header className="flex flex-col w-full bg-hero-gradient text-primary -mt-[60px]">
         <div className="px-[18px] lg:px-0 mt-[136px] mb-[24px] max-w-5xl mx-auto w-full">
-          <h1 className="font-bold text-4xl">Eligibility Checker</h1>
+          <h1 className="font-bold text-4xl">PMJDY Eligibility Tool</h1>
           <p className="text-md mt-[12px] leading-tight">Check your eligibilty for various national and Tamil Nadu state policies under the Pradhan Mantri Jan Dhan Yojna network</p>
           <p className="text-md mt-[4px] leading-tight"><strong>Important Note:</strong> This form assumes you are a citizen of India and have a domicile certificate for the state of Tamil Nadu.</p>
         </div>
