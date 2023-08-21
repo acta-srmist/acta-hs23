@@ -52,8 +52,8 @@ export default function RootLayout({
         <meta property="twitter:description" content="" />
         <meta property="twitter:image" content="/thumbnail.jpg" />
         
-        <Script src="https://kit.fontawesome.com/b0435a4746.js" crossOrigin="anonymous"></Script>
       </Head>
+      <Script src="https://kit.fontawesome.com/b0435a4746.js" crossOrigin="anonymous"></Script>
 
       <LanguageContext.Provider value={{lang, setLang}}>
       <body className={inter.className}>
