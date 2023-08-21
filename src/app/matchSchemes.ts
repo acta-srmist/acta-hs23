@@ -121,7 +121,7 @@ const matchSchemes = (values: FormValues) => {
 	if (TS.TNMRAHEAS.eligibility_func(gender, govt_school_612, pursuing_undergrad)) { result.tamilnadu.push("TNMRAHEAS") }
 	if (TS.TNUAS.eligibility_func(age, annual_household_income, reservation, disabled)) { result.tamilnadu.push("TNUAS") }
 	if (TS.TNMAS.eligibility_func(age, gender, fiance_age)) { result.tamilnadu.push("TNMAS") }
-	if (TS.TNCMCHIS.eligibility_func(annual_income)) { result.tamilnadu.push("TNCMCHIS") }
+	if (TS.TNCMCHIS.eligibility_func(annual_household_income)) { result.tamilnadu.push("TNCMCHIS") }
 	if (TS.TNMUTS.eligibility_func(age, gender, annual_income, wet_land_area, dry_land_area, electricity_consumption)) { result.tamilnadu.push("TNMUTS") }
 	if (TS.TNZTBTSW.eligibility_func(gender)) { result.tamilnadu.push("TNZTBTSW") }
 	if (TS.TNUYEGP.eligibility_func(highest_education, annual_income, age, gender)) { result.tamilnadu.push("TNUYEGP") }

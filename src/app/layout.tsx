@@ -60,7 +60,7 @@ export default function RootLayout({
             <div className="w-full lg:px-0 px-[18px] py-[18px] bg-white/70 shadow-md backdrop-blur-xl sticky top-0 z-20">
               <div className="w-full flex flex-row justify-between items-center max-w-5xl mx-auto">
                 <div className="flex flex-row gap-x-[24px] items-center">
-                  <img className="h-[28px]" src="/acta.svg" alt="acta_svg" />
+                  <img className="h-[28px] hidden sm:block" src="/acta.svg" alt="acta_svg" />
                   <img className="h-[36px]" src="https://upload.wikimedia.org/wikipedia/commons/8/84/PMJDY_Logo.png" alt="pmjdy_png" />
                   <img className="h-[36px]" src="https://upload.wikimedia.org/wikipedia/commons/0/0d/G20_India_2023_logo.svg" alt="g20_svg" />
                 </div>

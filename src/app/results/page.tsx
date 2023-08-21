@@ -1,6 +1,5 @@
 "use client"
 import SCHEMES from "@/constants/SCHEMES"
-import Image from "next/image"
 import { useSearchParams } from 'next/navigation'
 import { useContext } from "react"
 import { LanguageContext } from "../layout"
@@ -28,21 +27,25 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row mt-[24px]">
                   <div className="flex flex-col sm:flex-grow sm:pr-[36px]">
                     <strong className="mb-[6px]">Benefits</strong>
-                    <ol className="list-disc list-outside ml-[20px]">
+                    <ol className="list-disc list-outside ml-[20px] font-[Georgia]">
                       {SCHEMES.national[n].benefits[lang].map(v => (
                         <li>{v}</li>
                       ))}
                     </ol>
                   </div>
-                  <div className="flex flex-col sm:shrink-0 mt-[12px] sm:mt-0 pr-[72px]">
-                    <strong className="mb-[6px]">Helpline</strong>
-                    {(SCHEMES.national[n].helplines && SCHEMES.national[n].helplines.length > 0) && SCHEMES.national[n].helplines.map((v,i) => (
-                      <span key={`helpline_${i}`}><i className="fa-solid fa-phone mr-[6px]"></i>{v}</span>
-                    ))}
+                  <div className="flex flex-col sm:shrink-0 mt-[12px] sm:mt-0 sm:w-1/4">
+                    {(SCHEMES.national[n].helplines && SCHEMES.national[n].helplines.length > 0) && (
+                      <>
+                        <strong className="mb-[6px]">Helpline</strong>
+                        {SCHEMES.national[n].helplines.map((v,i) => (
+                          <span key={`helpline_${i}`}><i className="fa-solid fa-phone mr-[6px]"></i>{v}</span>
+                        ))}
+                      </>
+                    )}
                     {(SCHEMES.national[n].website && SCHEMES.national[n].website !== "") && (
                       <>
                         <strong className="mt-[12px] mb-[6px]">Website</strong>
-                        <a href={SCHEMES.national[n].website}><span>{SCHEMES.national[n].website}</span></a>
+                        <a href={SCHEMES.national[n].website}><span className="underline text-blue-600 break-all">{SCHEMES.national[n].website}</span></a>
                       </>
                     )}
                   </div>
@@ -55,20 +58,33 @@ export default function Home() {
           <>
             <br />
             <h2 className="font-bold text-2xl my-[24px]">Tamil Nadu Schemes</h2>
-            {schemes.tamilnadu.map((n: any, i: number) =>  (
+            {schemes.tamilnadu.map((n: any, i: number) => (
               <div className="p-[18px] mb-[18px] shadow-md rounded-lg" key={`scheme_${i}`}>
                 <span className="text-lg font-semibold text-primary">{SCHEMES.tamilnadu[n].name[lang]}</span>
                 <div className="flex flex-col sm:flex-row mt-[24px]">
-                  <div className="flex flex-col sm:flex-2">
+                  <div className="flex flex-col sm:flex-grow sm:pr-[36px]">
                     <strong className="mb-[6px]">Benefits</strong>
-                    <ol className="list-disc list-outside ml-[20px]">
+                    <ol className="list-disc list-outside ml-[20px] font-[Georgia]">
                       {SCHEMES.tamilnadu[n].benefits[lang].map(v => (
                         <li>{v}</li>
                       ))}
                     </ol>
                   </div>
-                  <div className="flex flex-col sm:flex-1">
-
+                  <div className="flex flex-col sm:shrink-0 mt-[12px] sm:mt-0 sm:w-1/4">
+                    {(SCHEMES.tamilnadu[n].helplines && SCHEMES.tamilnadu[n].helplines.length > 0) && (
+                      <>
+                        <strong className="mb-[6px]">Helpline</strong>
+                        {SCHEMES.tamilnadu[n].helplines.map((v,i) => (
+                          <span key={`helpline_${i}`}><i className="fa-solid fa-phone mr-[6px]"></i>{v}</span>
+                        ))}
+                      </>
+                    )}
+                    {(SCHEMES.tamilnadu[n].website && SCHEMES.tamilnadu[n].website !== "") && (
+                      <>
+                        <strong className="mt-[12px] mb-[6px]">Website</strong>
+                        <a href={SCHEMES.tamilnadu[n].website}><span className="underline text-blue-600 break-all">{SCHEMES.tamilnadu[n].website}</span></a>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
