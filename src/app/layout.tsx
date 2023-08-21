@@ -5,7 +5,6 @@ import { Inter } from "next/font/google"
 import Script from "next/script"
 import Link from "next/link"
 import Head from "next/head"
-// import { MongoClient } from "mongodb"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -30,8 +29,8 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en">
-      <Head>
+    <html lang={lang}>
+      <head>
         {/* Primary Meta Tags */}
         <title>Team Acta — Hack Sustain 2023</title>
         <meta name="title" content="Team Acta — Hack Sustain 2023" />
@@ -52,7 +51,7 @@ export default function RootLayout({
         <meta property="twitter:description" content="" />
         <meta property="twitter:image" content="https://actahs23.adikul.dev/thumbnail.jpg" />
         
-      </Head>
+      </head>
       <Script src="https://kit.fontawesome.com/b0435a4746.js" crossOrigin="anonymous"></Script>
 
       <LanguageContext.Provider value={{lang, setLang}}>
