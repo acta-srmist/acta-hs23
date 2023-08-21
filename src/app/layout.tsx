@@ -35,7 +35,7 @@ export default function RootLayout({
         <title>Team Acta — Hack Sustain 2023</title>
         <meta name="title" content="Team Acta — Hack Sustain 2023" />
         <meta name="description" content="" />
-        <link rel="icon" type="image/x-icon" href="/images/favicon.jpg">
+        <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
@@ -105,5 +105,4 @@ export default function RootLayout({
       </body>
       </LanguageContext.Provider>
     </html>
-  )
-}
+)}
