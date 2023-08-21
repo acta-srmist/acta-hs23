@@ -4,6 +4,7 @@ import { createContext, useState } from "react"
 import { Inter } from "next/font/google"
 import Script from "next/script"
 import Link from "next/link"
+import Head from "next/head"
 // import { MongoClient } from "mongodb"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -30,7 +31,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <head>
+      <Head>
         {/* Primary Meta Tags */}
         <title>Team Acta — Hack Sustain 2023</title>
         <meta name="title" content="Team Acta — Hack Sustain 2023" />
@@ -52,7 +53,7 @@ export default function RootLayout({
         <meta property="twitter:image" content="/thumbnail.jpg" />
         
         <Script src="https://kit.fontawesome.com/b0435a4746.js" crossOrigin="anonymous"></Script>
-      </head>
+      </Head>
 
       <LanguageContext.Provider value={{lang, setLang}}>
       <body className={inter.className}>
