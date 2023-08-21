@@ -28,8 +28,8 @@ export default function Home() {
                   <div className="flex flex-col sm:flex-grow sm:pr-[36px]">
                     <strong className="mb-[6px]">Benefits</strong>
                     <ol className="list-disc list-outside ml-[20px] font-[Georgia]">
-                      {SCHEMES.national[n].benefits[lang].map(v => (
-                        <li>{v}</li>
+                      {SCHEMES.national[n].benefits[lang].map((v,i) => (
+                        <li key={`ns_${i}`}>{v}</li>
                       ))}
                     </ol>
                   </div>
@@ -65,8 +65,8 @@ export default function Home() {
                   <div className="flex flex-col sm:flex-grow sm:pr-[36px]">
                     <strong className="mb-[6px]">Benefits</strong>
                     <ol className="list-disc list-outside ml-[20px] font-[Georgia]">
-                      {SCHEMES.tamilnadu[n].benefits[lang].map(v => (
-                        <li>{v}</li>
+                      {SCHEMES.tamilnadu[n].benefits[lang].map((v,i) => (
+                        <li key={`ts_${i}`}>{v}</li>
                       ))}
                     </ol>
                   </div>

@@ -34,8 +34,8 @@ export default function About() {
                   <div className="flex flex-col sm:flex-grow sm:pr-[36px]">
                     <strong className="mb-[6px]">Benefits</strong>
                     <ol className="list-disc list-outside ml-[20px] font-[Georgia]">
-                      {SCHEMES.national[n].benefits[lang].map(v => (
-                        <li>{v}</li>
+                      {SCHEMES.national[n].benefits[lang].map((v,i) => (
+                        <li key={`ns-${i}`}>{v}</li>
                       ))}
                     </ol>
                   </div>
@@ -65,15 +65,15 @@ export default function About() {
           <>
             <br />
             <h2 className="font-bold text-2xl my-[24px]">Tamil Nadu Schemes</h2>
-            {schemes.tamilnadu.map((n: any, i: number) => (
-              <div className="p-[18px] mb-[18px] shadow-md rounded-lg" key={`scheme_${i}`}>
+            {schemes.tamilnadu.map((n, i) => (
+              <div className="p-[18px] mb-[18px] shadow-md rounded-lg" key={`tn_${i}`}>
                 <span className="text-lg font-semibold text-primary">{SCHEMES.tamilnadu[n].name[lang]}</span>
                 <div className="flex flex-col sm:flex-row mt-[24px]">
                   <div className="flex flex-col sm:flex-grow sm:pr-[36px]">
                     <strong className="mb-[6px]">Benefits</strong>
                     <ol className="list-disc list-outside ml-[20px] font-[Georgia]">
-                      {SCHEMES.tamilnadu[n].benefits[lang].map(v => (
-                        <li>{v}</li>
+                      {SCHEMES.tamilnadu[n].benefits[lang].map((v,i) => (
+                        <li key={`ts_${i}`}>{v}</li>
                       ))}
                     </ol>
                   </div>
